@@ -1,0 +1,30 @@
+@import "~bootstrap/scss/bootstrap";
+
+.flex-root{
+  flex: 1 !important;
+}
+.vh-100{
+  min-height: 100vh !important;
+}
+
+.rtl{
+  direction: rtl !important;
+}
+
+.ltr{
+  direction: ltr !important;
+}
+
+.ml-auto{
+  margin-left: auto;
+}
+
+.mr-auto{
+  margin-right: auto;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
