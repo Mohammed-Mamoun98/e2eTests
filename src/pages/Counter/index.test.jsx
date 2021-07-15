@@ -1,12 +1,17 @@
-import Enzyme from "enzyme";
+import Enzyme, { mount } from "enzyme";
 import Counter from ".";
 import "../../utils/testing/setup";
 
 describe("COUNTER PAGE", () => {
-  const counter = Enzyme.mount(<Counter />);
-  const counterValueNode = counter.find("h4#counter-value");
-  const minusCountBtn = counter.find("#minus-count");
-  const addCountBtn = counter.find("#add-count");
+ 
+  let counter,counterValueNode,minusCountBtn,addCountBtn;
+
+  beforeEach(()=>{
+    counter = mount(<Counter />)
+    counterValueNode = counter.find("h4#counter-value");
+    minusCountBtn = counter.find("#minus-count");
+    addCountBtn = counter.find("#add-count");
+  })
 
   test("there is two btns", () => {
     expect(counter.find("button").length).toEqual(3);
@@ -31,6 +36,6 @@ describe("COUNTER PAGE", () => {
     const counterValueNode = counter.find("h4#counter-value");
 
     const counterValue = +counterValueNode.text();
-    expect(counterValue).toEqual(-1);
+    expect(counterValue).toEqual(-2);
   });
 });

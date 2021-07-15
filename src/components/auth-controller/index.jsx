@@ -7,9 +7,10 @@ export default function AuthController() {
 
   useEffect(() => {
     auth.onAuthStateChanged(function (user) {
-      if (user) return;
-      push("/login");
-      localStorage.removeItem('user')
+      if (!user) {
+        push("/login");
+        localStorage.removeItem("user");
+      } else push("/chats");
     });
   }, []);
 

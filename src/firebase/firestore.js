@@ -1,13 +1,26 @@
 import { firestore } from "./config";
 import {v4 as uuid} from 'uuid'
 
-const USERS_COLLECTION = "users";
+export const USERS_COLLECTION = "users";
 
 const isNotEmptyObject = (obj = {}) => {
   return Object.keys(obj).length > 0;
 };
 
 export const usersRef = firestore.collection(USERS_COLLECTION);
+
+export const getAllUsers  = async () => {
+  const snapshot = await firestore.collection(USERS_COLLECTION).get()
+  // .get().then(snapshot => {
+  //   const documents = snapshot.docs.map(doc => doc.data())
+  //   console.log({documents});
+  //   return documents
+  //   // return new Promise((resolve, reject) => {resolve(documents)})
+  // })
+  const documents = snapshot.docs.map(doc => doc.data())
+  console.log({documents});
+  return new Promise((resolve, reject) => {resolve(documents)})
+}
 
 const getDocRef = (collection, docId) => {
   return firestore.collection(collection).doc(docId);
